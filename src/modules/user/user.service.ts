@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from './user.entity';
+import { User } from './models/user.entity';
 import { DeepPartial, Repository } from 'typeorm';
 
 @Injectable()
@@ -20,6 +20,7 @@ export class UserService {
   }
   // 删除
   async del(id: string): Promise<boolean> {
+    console.log('id===>', id);
     const res = await this.UseRepository.delete(id);
     if (res?.affected > 0) {
       return true;
